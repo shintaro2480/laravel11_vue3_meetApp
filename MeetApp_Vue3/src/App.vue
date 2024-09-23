@@ -1,6 +1,9 @@
 <template>
 
+
+
   <div id="app">
+    <UserInfo /> <!-- ユーザー情報を表示 -->
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
@@ -24,11 +27,13 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import UserInfo from './components/UserInfo.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    UserInfo
   }
 }
 </script>

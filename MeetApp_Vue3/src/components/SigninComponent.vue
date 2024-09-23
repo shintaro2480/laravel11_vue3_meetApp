@@ -21,6 +21,7 @@
 
 <script>
 import axios from 'axios';
+import { useAuthStore } from '@/stores/auth'; // Piniaストアのインポート
 
 export default {
   data() {
@@ -48,20 +49,26 @@ export default {
 
     // ユーザーログインメソッド
     async loginUser() {
+      const authStore = useAuthStore(); // Piniaのストアを取得
       try {
         // CSRFトークンを先に取得する
         await this.getCsrfToken();
 
         // ログインAPIへのリクエスト
-        await axios.post('http://localhost:8000/api/login', this.formData, {
+        const response = await axios.post('http://localhost:8000/api/login', this.formData, {
           withCredentials: true, // セッションベースの認証を有効にする
         });
+        console.log('API response:', response.data);
 
         // ログイン成功時の処理
         this.successMessage = 'ログインに成功しました！';
         this.errorMessage = '';
 
         // ここで、ユーザーデータを取得してストアに保存したり、リダイレクト処理を行ったりすることも可能
+        // ユーザー情報をPiniaに保存
+        console.log(response.data);
+        authStore.setUser(response.data.user); // ここでLaravelから返ってきたユーザー情報をストアに保存
+
       } catch (error) {
         // エラーメッセージを表示
         this.successMessage = '';

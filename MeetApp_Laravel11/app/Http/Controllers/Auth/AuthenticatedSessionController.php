@@ -15,11 +15,17 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): Response
     {
-        $request->authenticate();
+        // 認証
+        if (!Auth::attempt($request->validated())) {
+            return response()->json(['message' => 'ログインに失敗しました。'], 401);
+        }
 
+        // 認証成功時にセッションを再生成
         $request->session()->regenerate();
 
-        return response()->noContent();
+        // ユーザー情報を返す
+        $user = Auth::user();
+        return response(['user' => $user]);
     }
 
     /**
