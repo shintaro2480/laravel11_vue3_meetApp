@@ -17,7 +17,8 @@ class AuthenticatedSessionController extends Controller
     {
         // 認証
         if (!Auth::attempt($request->validated())) {
-            return response()->json(['message' => 'ログインに失敗しました。'], 401);
+//            return response()->json(['message' => 'ログインに失敗しました。'], 401);
+            return response(['message' => 'ログインに失敗しました。'], 401);
         }
 
         // 認証成功時にセッションを再生成

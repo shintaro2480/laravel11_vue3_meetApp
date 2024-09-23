@@ -7,6 +7,7 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
+      <router-link to="/restaurant">行きたいお店</router-link> |
       <router-link to="/signup">新規登録</router-link> |
       <router-link to="/signin">ログイン</router-link> |
     </nav>
