@@ -4,6 +4,7 @@ import AboutView from '../views/AboutView.vue';
 import SigninComponent from '../components/SigninComponent.vue';
 import SignupComponent from '../components/SignupComponent.vue';
 import RestaurantComponent from '../components/RestaurantComponent.vue';
+import RestaurantCreateComponent from '../components/RestaurantCreateComponent.vue';
 
 const routes = [
     {
@@ -30,6 +31,11 @@ const routes = [
         path: '/restaurant',
         name: 'Restaurant',
         component: RestaurantComponent
+    },
+    {
+        path: '/restaurantcreate',
+        name: 'Restaurantcreate',
+        component: RestaurantCreateComponent
     },
 ];
 
