@@ -29,12 +29,17 @@
 <script>
 import HelloWorld from './components/HelloWorld.vue'
 import UserInfo from './components/UserInfo.vue';
+import { useAuthStore } from '@/stores/auth';
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     UserInfo
+  },
+  created() {
+    const authStore = useAuthStore();
+    authStore.initializeAuth(); // アプリ起動時にユーザー情報を復元
   }
 }
 </script>
