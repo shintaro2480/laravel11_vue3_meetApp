@@ -11,8 +11,8 @@ class RestaurantController extends Controller
     // 認証ユーザーのレストランを取得
     public function index()
     {
-//        $restaurants = Auth::user()->restaurants; // ログインユーザーに関連するレストランを取得
-        $restaurants = Auth::user()->restaurants()->with('user:id,name')->get();
+        $restaurants = Restaurant::with('user:id,name')->get(); // ログインユーザーに関連するレストランを取得
+//        $restaurants = Auth::user()->restaurants()->with('user:id,name')->get();
         return response()->json($restaurants);
     }
 
